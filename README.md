@@ -39,7 +39,7 @@ Once a user connects to the rogue network, the attacker can intercept and manipu
 
 • Arduino IDE 📊 
 
-• Wi-Fi library for ESP8266 (Hardware) 💻
+• Wi-Fi library for ESP8266  💻
 
 # Who Can Use This Project? 🤔
 
