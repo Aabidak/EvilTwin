@@ -45,7 +45,7 @@ Click Install to download and install the board
 
 Go to Tools > Manage Libraries
 
-Search for "ESP8266WiFi" and select the latest version named senses_wifi
+Search for "ESP8266WiFi" and select the latest version named ### senses_wifi
 
 ![st4](https://github.com/user-attachments/assets/dcc8143c-c25c-42a6-8fc2-79e2ffde63c9)
 
